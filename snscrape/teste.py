@@ -1,7 +1,7 @@
-with open('tweets_homofobico2.txt', 'r', encoding='utf-8') as arquivo:
+with open('douglas.txt', 'r', encoding='utf-8') as arquivo:
   texto = arquivo.read()
 
-tweets_list = texto.split("Idioma: pt")
+tweets_list = texto.split("-\n")
 
 print(tweets_list)
 
