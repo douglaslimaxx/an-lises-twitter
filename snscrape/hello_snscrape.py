@@ -7,7 +7,7 @@ import snscrape.modules.twitter as sntwitter
 tweets_list1 = []
 
 # Using TwitterSearchScraper to scrape data and append tweets to list
-for i,tweet in enumerate(sntwitter.TwitterSearchScraper('from:oleolacerda').get_items()): #declare a username 
+for i,tweet in enumerate(sntwitter.TwitterSearchScraper('from:douglaslimaxx_').get_items()): #declare a username 
     if i>8100: #number of tweets you want to scrape
         break
     # tweets_list1.append([tweet.date, tweet.id, tweet.content, tweet.user.username]) #declare the attributes to be returned
