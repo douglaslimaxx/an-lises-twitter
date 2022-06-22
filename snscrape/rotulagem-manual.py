@@ -1,6 +1,6 @@
 import pandas as pd
 
-dados = pd.read_csv("./dados/filtrados.csv")
+dados = pd.read_csv("./dados/com-rotualgem.csv")
 
 size = len(dados["id"])
 
@@ -16,12 +16,13 @@ else:
 index = 0
 
 for r in range(len(rotulagem)):
-    print(index)
+    # print(index)
     if(rotulagem[r] == "r"):
-        print(index)
-
+        # print(index)
         index = r
         break
+
+print("\n O número de tweets já rolutados é %i \n" % index)
 
 for i in range(index, size):
     # print(rotulagem)
@@ -31,9 +32,9 @@ for i in range(index, size):
         rotulagem[i] = "yes"
     elif(avaliacao == "n"):
         rotulagem[i] = "no"
-    elif(avaliacao == "stop"):
+    else:
         break
 
 dados["rotulagem"] = rotulagem
 
-dados.to_csv("./filtrados.csv")
+dados.to_csv("./dados/com-rotualgem.csv", index=False)
