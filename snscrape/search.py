@@ -10,11 +10,13 @@ total = 0
 
 total_portugues = 0
 
-palavras = ["baitola", "bichona", "bixa", "boiola", "gayzada",
-            "gayzismo", "homossexualismo", "viadagem", "viadao", "viadinho", "bicha"]
+palavras = ["#FUZILARGAYS"]
+
+# palavras = ["baitola", "bichona", "bixa", "boiola", "gayzada",
+#             "gayzismo", "homossexualismo", "viadagem", "viadao", "viadinho", "bicha"]
 
 for p in palavras:
-    for i, tweet in enumerate(sntwitter.TwitterSearchScraper(p + ' since:2018-10-06 until:2018-10-08').get_items()):
+    for i, tweet in enumerate(sntwitter.TwitterSearchScraper(p + ' since:2018-09-01 until:2018-11-01').get_items()):
         if i > 100000:
             break
         total += 1
@@ -39,4 +41,4 @@ tweets_df1 = pd.DataFrame(tweets_list1, columns=[
                           'Datetime', 'TweetId', 'Texto', 'Username', 'Idioma', 'Palavra',
                           'UserDescription', 'UserDescriptionRaw', 'FriendsCount', 'Status', 'Retweet', 'Quoted'])
 
-tweets_df1.to_csv("./coleta-completa(com-v).csv")
+tweets_df1.to_csv("./coleta-fuzilagays.csv")

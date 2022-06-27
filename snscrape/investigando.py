@@ -1,4 +1,5 @@
 import pandas as pd
+from sklearn.datasets import dump_svmlight_file
 
 # palavra = input()
 
@@ -47,3 +48,23 @@ for r in rotulagem:
         homofobico += 1
 
 print(homofobico)
+
+# dados = pd.read_csv("./dados/dados-finalizados.csv")
+
+# palavras = ["baitola", "bichona", "bixa", "boiola", "gayzada",
+#             "gayzismo", "homossexualismo", "viadagem", "viadao", "viadinho", "bicha"]
+
+# tweets = dados["Texto"]
+# print(len(tweets))
+
+# duplicated = 0
+
+# for t in tweets:
+#     check_p = 0
+#     for p in palavras:
+#         if(p in t):
+#             check_p += 1
+#     if(check_p == 0):
+#         duplicated += 1
+
+# print(duplicated)
