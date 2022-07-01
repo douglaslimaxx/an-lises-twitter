@@ -1,11 +1,10 @@
 import pandas as pd
-from sklearn.datasets import dump_svmlight_file
 
 # palavra = input()
 
 # dados = pd.read_csv("../../dados-tcc/word-"+palavra+".csv")
 
-dados = pd.read_csv("./dados/com-rotualgem.csv")
+dados = pd.read_csv("./dados/com-rotulagem-d.csv")
 
 # toxidade = dados["toxidade"]
 # hate = dados["HateSpeech"]
@@ -36,15 +35,17 @@ dados = pd.read_csv("./dados/com-rotualgem.csv")
 
 # dados.to_csv("./dados-finalizados.csv", index=False)
 
-# print(dados.columns)
+print(dados.columns)
 
+rotulagem_d = dados["rotulage-description"]
 rotulagem = dados["rotulagem"]
 
-print(len(rotulagem))
+size = len(rotulagem)
+print(size)
 homofobico = 0
 
-for r in rotulagem:
-    if(r == "yes"):
+for i in range(size):
+    if(rotulagem_d[i] > 0 and rotulagem[i] == "yes"):
         homofobico += 1
 
 print(homofobico)

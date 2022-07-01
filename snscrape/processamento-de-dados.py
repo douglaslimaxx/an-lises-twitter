@@ -11,7 +11,7 @@ def remover_mencao(tweet: str):
     return " ".join(toReturn)
 
 
-dados = pd.read_csv("./base-dados.csv")
+dados = pd.read_csv("./dados/coleta-completa(com-v).csv")
 
 limpo = []
 
@@ -20,4 +20,4 @@ for t in dados["Texto"]:
 
 dados["Texto-Limpo"] = limpo
 
-dados.to_csv("./dados-limpos.csv")
+dados.to_csv("./dados/coleta-completa(com-v).csv")
