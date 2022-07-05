@@ -4,7 +4,9 @@ import pandas as pd
 
 # dados = pd.read_csv("../../dados-tcc/word-"+palavra+".csv")
 
-dados = pd.read_csv("./dados/com-rotulagem-d.csv")
+dados = pd.read_csv("./dados/base-tcc-com-rotulagem.csv")
+
+dados_r = pd.read_csv("./dados/montados.csv")
 
 # toxidade = dados["toxidade"]
 # hate = dados["HateSpeech"]
@@ -37,18 +39,33 @@ dados = pd.read_csv("./dados/com-rotulagem-d.csv")
 
 print(dados.columns)
 
-rotulagem_d = dados["rotulage-description"]
-rotulagem = dados["rotulagem"]
+toxidade = dados["toxidade"]
+hate = dados["HateSpeech"]
+rotulagem = dados["Rotulagem"]
+tweets_ids = dados["TweetId"]
+tweets_ids_r = dados_r["TweetId"]
 
 size = len(rotulagem)
 print(size)
 homofobico = 0
 
+ids = []
+
 for i in range(size):
-    if(rotulagem_d[i] > 0 and rotulagem[i] == "yes"):
+    if(hate[i] == "yes" and rotulagem[i] == "yes"):
+        ids.append(tweets_ids[i])
         homofobico += 1
 
-print(homofobico)
+print({"homo-hate": homofobico})
+
+rotulados = 0
+
+for t in ids:
+    if(t in tweets_ids_r.to_list()):
+        rotulados += 1
+
+print({"rotulados": rotulados})
+
 
 # dados = pd.read_csv("./dados/dados-finalizados.csv")
 
