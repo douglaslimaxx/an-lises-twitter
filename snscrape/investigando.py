@@ -4,27 +4,34 @@ import pandas as pd
 
 # dados = pd.read_csv("../../dados-tcc/word-"+palavra+".csv")
 
-dados = pd.read_csv("./dados/base-tcc-com-rotulagem.csv")
+dados = pd.read_csv("./dados/dados-finalizados.csv")
 
-dados_r = pd.read_csv("./dados/montados.csv")
+# dados_r = pd.read_csv("./dados/montados.csv")
 
-# toxidade = dados["toxidade"]
-# hate = dados["HateSpeech"]
+toxidade = dados["toxidade"]
+hate = dados["HateSpeech"]
+palavras = dados["Palavra"].to_list()
 
-# toxic_hate = 0
-# is_hate_notToxic = 0
+print(len(palavras))
 
-# for t in range(len(toxidade)):
-#     if(toxidade[t] == 1):
-#         if(hate[t] == "yes"):
-#             toxic_hate += 1
-#     else:
-#         if(hate[t] == "yes"):
-#             is_hate_notToxic += 1
+termos = ["baitola", "bichona", "bixa", "boiola", "gayzada",
+          "gayzismo", "homossexualismo", "viadagem", "viadao", "viadinho", "bicha", "viado"]
 
-# print("O número de tweets tóxicos e com discurso de ódio foi %i" % toxic_hate)
-# print("O número de tweets com discurso de ódio e não tóxico foi %i" %
-#       is_hate_notToxic)
+for t in termos:
+    print("Foram %i tweets com a palavra %s" % (palavras.count(t), t))
+
+toxic_hate = 0
+is_hate_notToxic = 0
+
+for t in range(len(toxidade)):
+    if(toxidade[t] == 1):
+        toxic_hate += 1
+    if(hate[t] == "yes"):
+        is_hate_notToxic += 1
+
+print("O número de tweets tóxicos foi %i" % toxic_hate)
+print("O número de tweets com discurso de ódio foi %i" %
+      is_hate_notToxic)
 
 # del dados["Unnamed: 0.2"]
 
@@ -37,34 +44,34 @@ dados_r = pd.read_csv("./dados/montados.csv")
 
 # dados.to_csv("./dados-finalizados.csv", index=False)
 
-print(dados.columns)
+# print(dados.columns)
 
-toxidade = dados["toxidade"]
-hate = dados["HateSpeech"]
-rotulagem = dados["Rotulagem"]
-tweets_ids = dados["TweetId"]
-tweets_ids_r = dados_r["TweetId"]
+# toxidade = dados["toxidade"]
+# hate = dados["HateSpeech"]
+# rotulagem = dados["Rotulagem"]
+# tweets_ids = dados["TweetId"]
+# tweets_ids_r = dados_r["TweetId"]
 
-size = len(rotulagem)
-print(size)
-homofobico = 0
+# size = len(rotulagem)
+# print(size)
+# homofobico = 0
 
-ids = []
+# ids = []
 
-for i in range(size):
-    if(hate[i] == "yes" and rotulagem[i] == "yes"):
-        ids.append(tweets_ids[i])
-        homofobico += 1
+# for i in range(size):
+#     if(hate[i] == "yes" and rotulagem[i] == "yes"):
+#         ids.append(tweets_ids[i])
+#         homofobico += 1
 
-print({"homo-hate": homofobico})
+# print({"homo-hate": homofobico})
 
-rotulados = 0
+# rotulados = 0
 
-for t in ids:
-    if(t in tweets_ids_r.to_list()):
-        rotulados += 1
+# for t in ids:
+#     if(t in tweets_ids_r.to_list()):
+#         rotulados += 1
 
-print({"rotulados": rotulados})
+# print({"rotulados": rotulados})
 
 
 # dados = pd.read_csv("./dados/dados-finalizados.csv")
